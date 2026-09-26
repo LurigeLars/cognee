@@ -17,11 +17,11 @@ resolution-markers = [
 ]
 
 [options]
-exclude-newer = "0001-01-01T00:00:00Z" # This has no effect and is included for backwards compatibility when using relative exclude-newer values.
+exclude-newer = "2026-09-24T17:53:15.522243031Z"
 exclude-newer-span = "P2D"
 
 [options.exclude-newer-package]
-enola-cli = { timestamp = "0001-01-01T00:00:00Z", span = "PT0S" }
+enola-cli = { timestamp = "2026-09-26T17:53:15.522252298Z", span = "PT0S" }
 
 [manifest]
 constraints = [
@@ -1613,7 +1613,7 @@ requires-dist = [
     { name = "pylance", specifier = ">=0.22.0,<=0.36.0" },
     { name = "pympler", specifier = ">=1.1,<2.0.0" },
     { name = "pypdf", specifier = ">=6.6.2,<7.0.0" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.4.0,<8" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=9.0.3,<10" },
     { name = "pytest-asyncio", marker = "extra == 'dev'", specifier = ">=0.21.1,<0.22" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=6.1.1,<7.0.0" },
     { name = "pytest-split", marker = "extra == 'dev'", specifier = ">=0.11.0,<0.12" },
@@ -1653,7 +1653,7 @@ provides-extras = ["api", "scraping", "fastembed", "neo4j", "neptune", "postgres
 dev = [
     { name = "dateparser", specifier = ">=1.2,<2" },
     { name = "httpx", specifier = ">=0.28.1" },
-    { name = "pytest", specifier = ">=7.4.4" },
+    { name = "pytest", specifier = ">=9.0.3,<10" },
     { name = "pytest-asyncio", specifier = ">=0.21.2" },
     { name = "pytest-split", specifier = ">=0.11.0,<0.12" },
     { name = "pytest-timeout", specifier = ">=2.3.1" },
@@ -9204,7 +9204,7 @@ wheels = [
 
 [[package]]
 name = "pytest"
-version = "7.4.4"
+version = "9.1.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "colorama", marker = "sys_platform == 'win32'" },
@@ -9212,11 +9212,12 @@ dependencies = [
     { name = "iniconfig" },
     { name = "packaging" },
     { name = "pluggy" },
+    { name = "pygments" },
     { name = "tomli", marker = "python_full_version < '3.11'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/80/1f/9d8e98e4133ffb16c90f3b405c43e38d3abb715bb5d7a63a5a684f7e46a3/pytest-7.4.4.tar.gz", hash = "sha256:2cf0005922c6ace4a3e2ec8b4080eb0d9753fdc93107415332f50ce9e7994280", size = 1357116, upload-time = "2023-12-31T12:00:18.035Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/e4/47/b9efed96c114afcfa3c9d3fe98a76a1d14c74a9e266d397cf6eb64be5e01/pytest-9.1.1.tar.gz", hash = "sha256:1088fbde8f2b49d95a549a195707afa7a76a3ce9bcadc26b6d71f0ffda5fe313", size = 1636369, upload-time = "2026-06-19T10:58:32.857Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/51/ff/f6e8b8f39e08547faece4bd80f89d5a8de68a38b2d179cc1c4490ffa3286/pytest-7.4.4-py3-none-any.whl", hash = "sha256:b090cdf5ed60bf4c45261be03239c2c1c22df034fbffe691abe93cd80cea01d8", size = 325287, upload-time = "2023-12-31T12:00:13.963Z" },
+    { url = "https://files.pythonhosted.org/packages/24/25/1de2678b631f5a49215c6c96fff41ba892b0a34df68d6d80292b1b48aa7f/pytest-9.1.1-py3-none-any.whl", hash = "sha256:37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c", size = 386536, upload-time = "2026-06-19T10:58:31.347Z" },
 ]
 
 [[package]]
