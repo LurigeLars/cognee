@@ -1,0 +1,23 @@
+name: Diagnose unstructured lock
+on:
+  push:
+    branches: [security/unstructured-0.24.0-20260926]
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: security/unstructured-0.24.0-20260926
+      - name: Print locked unstructured entries
+        run: |
+          python - <<'PY'
+          import re, pathlib
+          for path in [pathlib.Path("uv.lock"), pathlib.Path("cognee-mcp/uv.lock")]:
+              text = path.read_text()
+              print(f"=== {path} ===")
+              for m in re.finditer(r'\[\[package\]\]\nname = "unstructured"\nversion = "([^"]+)"', text):
+                  start = max(0, m.start()-300)
+                  end = min(len(text), m.end()+1200)
+                  print(text[start:end])
+          PY
