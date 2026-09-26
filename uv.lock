@@ -17,11 +17,11 @@ resolution-markers = [
 ]
 
 [options]
-exclude-newer = "0001-01-01T00:00:00Z" # This has no effect and is included for backwards compatibility when using relative exclude-newer values.
+exclude-newer = "2026-09-24T17:17:34.914064313Z"
 exclude-newer-span = "P2D"
 
 [options.exclude-newer-package]
-enola-cli = { timestamp = "0001-01-01T00:00:00Z", span = "PT0S" }
+enola-cli = { timestamp = "2026-09-26T17:17:34.914073901Z", span = "PT0S" }
 
 [manifest]
 constraints = [
