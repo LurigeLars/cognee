@@ -1,0 +1,42 @@
+name: Security AnyIO lock refresh
+
+on:
+  push:
+    branches:
+      - security/cognee-anyio-postsync-20260926
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v7
+        with:
+          ref: security/cognee-anyio-postsync-20260926
+          fetch-depth: 0
+
+      - name: Install uv
+        run: python -m pip install --disable-pip-version-check uv==0.10.0
+
+      - name: Refresh root lock
+        run: uv lock --upgrade-package anyio
+
+      - name: Refresh MCP lock
+        run: |
+          cd cognee-mcp
+          uv lock --upgrade-package anyio
+
+      - name: Commit refreshed locks
+        run: |
+          if git diff --quiet -- uv.lock cognee-mcp/uv.lock; then
+            echo "No lockfile change produced"
+            exit 1
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add uv.lock cognee-mcp/uv.lock
+          git commit -m "security: refresh AnyIO locks"
+          git push origin HEAD:security/cognee-anyio-postsync-20260926
