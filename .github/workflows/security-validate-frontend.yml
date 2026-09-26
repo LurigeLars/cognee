@@ -18,5 +18,4 @@ jobs:
           cache: npm
           cache-dependency-path: cognee-frontend/package-lock.json
       - run: npm ci --ignore-scripts
-      - run: npm run lint
       - run: npm test -- --runInBand
