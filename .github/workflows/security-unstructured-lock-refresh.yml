@@ -1,0 +1,33 @@
+name: Security unstructured lock refresh
+
+on:
+  push:
+    branches:
+      - security/unstructured-0.24.0-20260926
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-unstructured:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: security/unstructured-0.24.0-20260926
+          fetch-depth: 0
+      - run: python -m pip install --disable-pip-version-check uv==0.10.0
+      - name: Refresh root lock
+        run: uv lock --upgrade-package unstructured
+      - name: Refresh MCP lock
+        run: |
+          cd cognee-mcp
+          uv lock --upgrade-package unstructured
+      - name: Commit lockfiles
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add uv.lock cognee-mcp/uv.lock
+          git diff --cached --quiet && exit 1
+          git commit -m "security: refresh unstructured locks"
+          git push origin HEAD:security/unstructured-0.24.0-20260926
