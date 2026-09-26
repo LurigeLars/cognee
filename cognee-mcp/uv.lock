@@ -17,12 +17,12 @@ resolution-markers = [
 ]
 
 [options]
-exclude-newer = "2026-09-24T16:00:48.671334776Z"
+exclude-newer = "2026-09-24T18:08:48.045900209Z"
 exclude-newer-span = "P2D"
 
 [options.exclude-newer-package]
-enola-cli = { timestamp = "2026-09-26T16:00:48.671348271Z", span = "PT0S" }
-cognee = { timestamp = "2026-09-26T16:00:48.671343592Z", span = "PT0S" }
+enola-cli = { timestamp = "2026-09-26T18:08:48.045912131Z", span = "PT0S" }
+cognee = { timestamp = "2026-09-26T18:08:48.045905409Z", span = "PT0S" }
 
 [manifest]
 constraints = [
